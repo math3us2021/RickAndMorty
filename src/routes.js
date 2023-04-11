@@ -24,6 +24,7 @@ export default function Routes() {
                 <Stack.Screen name="main" component={Main} options={{
                     title: 'GitHub VIEWER',
                     headerTitleAlign: 'center',
+                    headerLeft: null,
                     headerStyle: {
                         backgroundColor: '#3498db'
                     },

@@ -9,7 +9,7 @@ const Login = () => {
     const navigation = useNavigation();
 
     const handleLogin = () => {
-        if(email === 'admin' && password === '123'){
+        if(email === '' && password === ''){
             navigation.navigate('main')
         }else{
             alert('E-mail ou senha inválidos!')
