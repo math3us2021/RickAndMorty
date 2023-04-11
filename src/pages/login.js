@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, {useState} from "react";
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
@@ -5,9 +6,14 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const navigation = useNavigation();
+
     const handleLogin = () => {
-        //aqui você pode implementar a lógica de login
-        console.log(`E-mail: ${email}, Password: ${password}`)
+        if(email === 'admin' && password === '123'){
+            navigation.navigate('main')
+        }else{
+            alert('E-mail ou senha inválidos!')
+        }
     };
 
     return (
