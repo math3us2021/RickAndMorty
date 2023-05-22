@@ -23,7 +23,7 @@ export default function Routes() {
                     },
                     }}/>
                 <Stack.Screen name="main" component={Main} options={{
-                    title: 'GitHub VIEWER',
+                    title: 'Rick and Morty',
                     headerTitleAlign: 'center',
                     headerLeft: null,
                     headerStyle: {

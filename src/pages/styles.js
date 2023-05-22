@@ -38,11 +38,15 @@ export const User = styled.View`
     align-items: center;
     margin: 0 20px 30px;
 `;
+export const DivContainer = styled.View`
+    /* align-items: center; */
+    /* margin: 0 20px 30px; */
+`;
 
 export const Avatar = styled.Image`
-    width: 64px;
-    height: 64px;
-    border-radius: 32px;
+    width: 150px;
+    height: 150px;
+    /* border-radius: 32px; */
     background: #eee;
 `;
 
@@ -50,8 +54,8 @@ export const Name = styled.Text`
     font-size: 14px;
     color: #333;
     font-weight: bold;
-    margin-top: 4px;
-    text-align: center;
+    margin: 4px;
+    /* text-align: center; */
 `;
 
 export const Bio = styled.Text.attrs({
@@ -61,17 +65,19 @@ export const Bio = styled.Text.attrs({
     line-height: 18px;
     color: #999;
     margin-top: 5px;
-    text-align: center;
+    margin-left: 5px;
+
 `;
 
 export const ProfileButton = styled(RectButton)`
-    margin-top: 10px;
+    margin: 18px 5px 5px;
+    padding: 10px;
     align-self: stretch;
     border-radius: 4px;
     background: #3498db;
     justify-content: center;
     align-items: center;
-    height: 36px;
+    height: 35px;
 `;
 
 export const ProfileButtonText = styled.Text`
