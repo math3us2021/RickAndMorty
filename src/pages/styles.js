@@ -57,6 +57,18 @@ export const Name = styled.Text`
     margin: 4px;
     /* text-align: center; */
 `;
+export const NameDetal = styled.Text`
+    font-size: 25px;
+    color: #3498db;
+    font-weight: bold;
+    margin: 4px;
+`;
+export const Curiosity = styled.Text`
+    font-size: 30px;
+    color: #013d55;
+    font-weight: bold;
+    margin: 4px;
+`;
 
 export const Bio = styled.Text.attrs({
     numberOfLines: 2,
@@ -92,11 +104,19 @@ export const Header = styled.View`
   align-items: center;
   justify-content: center;
 `;
+export const ContainerDetal = styled.View`
+display: flex;
+flex-direction: column;
+border: 1px solid #3498db;
+border-radius: 10px;
+padding: 15px;
+margin: 10px;
+`;
 
 export const Avatarperfil = styled.Image`
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
+  width: 130px;
+  height: 130px;
+  /* border-radius: 20px; */
   background: #eee;
 `;
 
