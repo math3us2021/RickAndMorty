@@ -8,7 +8,7 @@ import api from '../services/api';
 export default class Main extends Component {
 
     state = {
-        newUser: '',
+        name: '',
         users: [],
         loading: false,
     }
@@ -31,26 +31,35 @@ export default class Main extends Component {
 
     handleAddUser = async () => {
         try {
-            const { users, newUser } = this.state;
+            const {  name,  users, loading} = this.state;
 
             this.setState({ loading: true });
+            this.setState({ loading: true });
+            const response = await api.get(`/character/?name=${name}`);
+            const episodeId = await response.data.results[0].episode[0].split('/').pop();
+            const locationId = await response.data.results[0].location.url.split('/').pop();
+            const responseEpisode = await api.get(`/episode/${episodeId}`);
 
-            const response = await api.get(`/users/${newUser}`);
-
+           
             const data = {
-                name: response.data.name,
-                login: response.data.login,
-                bio: response.data.bio,
-                avatar: response.data.avatar_url,
+                image: response.data.results[0].image,
+                name: response.data.results[0].name,
+                status: response.data.results[0].status,
+                locationName: response.data.results[0].location.name,
+                locationUrl: locationId,
+                species: response.data.results[0].species,
+                episode: responseEpisode.data.episode,
+                episodeQtd: response.data.results[0].episode.length,
             };
             
-
+            
             this.setState({
                 users: [data, ...users],
-                newUser: '',
+                name: '',
                 loading: false,
             });
-
+            
+            console.log("🚀 ~ file: main.js:51 ~ Main ~ handleAddUser= ~ data:", data)
             Keyboard.dismiss();
 
         } catch (error) {
@@ -61,8 +70,9 @@ export default class Main extends Component {
 
     render() {
 
-        const { users, newUser, loading } = this.state;
-
+        const { name, users, loading } = this.state;
+        console.log("🚀 ~ file: main.js:74 ~ Main ~ render ~ users:", users)
+        
         return (
             <Container>
                 <Form>
@@ -70,8 +80,8 @@ export default class Main extends Component {
                         autoCorrect={false}
                         autoCapitalize="none"
                         placeholder="Adicionar usuário"
-                        value={newUser}
-                        onChangeText={text => this.setState({ newUser: text })}
+                        value={name}
+                        onChangeText={text => this.setState({ name: text })}
                         returnKeyType="send"
                         onSubmitEditing={this.handleAddUser}
                     />
@@ -83,12 +93,17 @@ export default class Main extends Component {
                 <List
                     showVerticalScrollIndicator={false}
                     data={users}
-                    keyExtractor={user => user.login}
+                    // keyExtractor={user => user.id}
                     renderItem={({ item }) => (
                         <User>
-                            <Avatar source={{ uri: item.avatar }} />
+                            <Avatar source={{ uri: item.image }} />
                             <Name>{item.name}</Name>
-                            <Bio>{item.bio}</Bio>
+                            <Name>Status</Name>
+                            <Bio>{item.status}</Bio>
+                            <Name>Localização</Name>
+                            <Bio>{item.locationName}</Bio>
+                            <Name>Nome do episodio</Name>
+                            <Bio>{item.episode}</Bio>
 
                             <ProfileButton onPress={() => {
                                 this.props.navigation.navigate('user', { user: item });

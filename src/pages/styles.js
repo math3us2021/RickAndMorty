@@ -117,7 +117,7 @@ export const Stars = styled.FlatList.attrs({
 `;
 
 export const Starred = styled.View`
-  background: #f5f5f5;
+  background: #f5f5;
   border-radius: 4px;
   padding: 10px 15px;
   margin-bottom: 20px;
