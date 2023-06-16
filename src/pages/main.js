@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Container, Form, Input, SubmitButton, List, User, Avatar, Name, Bio, ProfileButton, ProfileButtonText,DivContainer } from './styles';
 import api from '../services/api';
 
+
 export default class Main extends Component {
 
     state = {
@@ -89,7 +90,7 @@ export default class Main extends Component {
                         {loading ? (<ActivityIndicator color="#fff" />) : (<Icon name='add' size={20} color='#fff' />)}
                     </SubmitButton>
                 </Form>
-
+                
                 <List
                     showVerticalScrollIndicator={false}
                     data={users}
